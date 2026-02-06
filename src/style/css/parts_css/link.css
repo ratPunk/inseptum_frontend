@@ -1,0 +1,106 @@
+.link{
+    text-decoration: none;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+
+    transition: 0.3s;
+    border-radius: var(--border-radius-md);
+}
+
+.link:hover{
+    gap: 0;
+    color: var(--primary-color);
+}
+
+.header-link:hover{
+    background-color: var(--accent-color);
+    padding: 0.5rem 1rem;
+}
+
+.active{
+    background-color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    color: var(--primary-color);
+}
+
+.big-link{
+    font-size: 1.6rem !important;
+    padding: 1.2rem !important;
+}
+
+.reverse{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: end;
+    gap: 0.5rem;
+}
+
+.cta-link{
+    background-color:var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    color: var(--primary-color);
+    transition: var(--animation-normal);
+}
+.cta-link:hover{
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+.cta-link-hero{
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius-md);
+    padding: 0.5rem 1rem;
+    color: var(--while);
+}
+
+.register{
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+}
+.register:hover{
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+.auth{
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+.auth:hover{
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+
+/* footer-icon-link */
+.footer-icon-link{
+    
+}
+.footer-icon-link img{
+    width: 50px !important;
+    height: auto !important;
+    border-radius: 50%;
+    transition: .5s;
+}
+.footer-icon-link:hover img{
+    transform: scale(1.1);
+}
+
+/* footer-link */
+.footer-link{
+    transition: .5s !important;
+    color: #fff;
+    font-size: 1.1rem;
+}
+.footer-link:hover{
+    /* transform: translateY(5px) !important; */
+    background-color: var(--accent-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius-md);
+}

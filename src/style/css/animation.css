@@ -1,0 +1,125 @@
+/* Плавное появление справа налево */
+.text-slide-in {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: textSlideIn var(--animation-slow) var(--ease-default) forwards;
+    animation-delay: var(--animation-normal);
+}
+
+@keyframes textSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+/* Плавное появление слева направо */
+.title-appear {
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: titleAppear var(--animation-slow) var(--ease-default) forwards;
+    animation-delay: var(--animation-slow);
+}
+
+@keyframes titleAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+        filter: blur(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: blur(0);
+    }
+}
+
+
+
+/* Плавное появление снизу вверх */
+.description-appear {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: descriptionAppear var(--animation-slow) var(--ease-default) forwards;
+    animation-delay: var(--animation-slower);
+}
+
+@keyframes descriptionAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+
+.block-rise-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: blockRiseUp var(--animation-slower) var(--ease-default) forwards;
+    animation-delay: var(--animation-slowest);
+}
+
+@keyframes blockRiseUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+.image-reveal {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: imageReveal var(--animation-slowest) var(--ease-default) forwards;
+    animation-delay: var(--animation-fast);
+}
+
+@keyframes imageReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: brightness(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+
+
+.fadeIn{
+    opacity: 0;
+    animation: imageReveal var(--animation-slowest) var(--ease-default) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

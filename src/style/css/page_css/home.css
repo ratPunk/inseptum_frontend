@@ -1,0 +1,522 @@
+#Home {
+    overflow-x: hidden;
+}
+
+.home-container {
+    /* Стили контейнера */
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    padding: var(--padding-md);
+    gap: var(--padding-md);
+    height: var(--section-height-large);
+}
+
+.hero-section .hero-block {
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-md);
+}
+
+/* Блок 1 - Основной */
+.hero-section .hero-block-1 {
+    /* background-color: var(--accent-color); */
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* justify-content: start; */
+    gap: var(--padding-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Анимация развертывания блока 1 */
+.hero-section .hero-block-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--gradient-orange);
+    animation: blockDeploy var(--animation-slowest) var(--ease-bounce) forwards;
+    z-index: 0;
+}
+
+.hero-section .hero-block-1 > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes blockDeploy {
+    0% {
+        width: 0;
+        transform: translateX(-20px);
+    }
+    70% {
+        width: 100%;
+        transform: translateX(0);
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Текст Inseptum */
+.hero-section .hero-block-1 .inseptum {
+    text-align: end;
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-light);
+    color: var(--white);
+    margin: 0;
+}
+
+/* Заголовок */
+.hero-section .hero-block-1 .title {
+    color: var(--white);
+    margin: 0;
+}
+
+/* Описание */
+.hero-section .hero-block-1 .description {
+    color: var(--white);
+    margin: 0;
+}
+
+.hero-section .hero-block-1 .cta-button-group{
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Блок 2 - Появление снизу с задержкой */
+.hero-section .hero-block-2 {
+    /* background-color: var(--secondary-color); */
+    background-color: var(--primary-color);
+    grid-row: 3/6;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-section .hero-block-2 .block-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: var(--padding-md);
+}
+
+.hero-section .hero-block-2 .block-container .block{
+    background-color: var(--secondary-color);
+    display: inline-block;
+    flex: 1;
+    padding: var(--padding-md);
+    border-radius: var(--border-radius-md);
+
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.hero-section .hero-block-2 p{
+    font-size: 1.5rem;
+    margin-top: 4rem;
+}
+
+/* Блок 3 - Изображение с эффектом появления */
+.hero-section .hero-block-3 {
+    grid-row: 1/6;
+    grid-column: 2/3;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.hero-section .hero-block-3 img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: all var(--animation-normal) var(--ease-default);
+}
+
+.hero-section .hero-block-3 img:hover{
+    transform: scale(1.1);
+}
+
+.hero-section .hero-block-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-shine);
+    transform: translateX(-100%);
+    animation: shineOver calc(var(--animation-slowest) * 1.3) ease-in-out forwards;
+    animation-delay: calc(var(--animation-slowest) * 1.2);
+}
+
+@keyframes shineOver {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Секция преимуществ*/
+.advantages {
+    min-height: var(--section-height-large);
+    margin: var(--margin-md);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.advantages h1{
+    color: var(--white);
+}
+
+.advantages-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: var(--padding-md);
+}
+
+.advantages-list .advantages-block{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    flex: 1;
+}
+
+.advantages-list .advantages-block:hover .advantages-block-text p{
+    color: var(--secondary-color)
+}
+
+.advantages-block img{
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    object-fit: cover;
+}
+
+.advantages-block-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    color: var(--white);
+    padding: var(--padding-md);
+    height: 100%;
+}
+
+.advantages-block-text p{
+    transition: var(--animation-slow);
+}
+
+.advantages-block-text .link{
+    margin-top: auto;
+    color: var(--secondary-color);
+    text-align: end;
+}
+
+/* Ключевые разделы */
+.key-sections {
+    min-height: var(--section-height-large);
+    margin: var(--margin-md);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.key-sections h1{
+    color: var(--white);
+}
+
+.key-sections-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    column-gap: var(--padding-md);
+}
+
+.key-sections-container .left{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    padding: var(--padding-md);
+    color: var(--white);
+}
+
+.key-sections-container .left .image-container{
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.key-sections-container .left .image-container img{
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    object-fit: cover;
+    transition: var(--animation-normal) var(--ease-default);
+}
+
+.key-sections-container .left .image-container img:hover{
+    transform: scale(1.1);
+}
+
+.key-sections-container .right{
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    height: 100%;
+}
+
+.key-sections-container .block{
+    padding: var(--padding-md);
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    font-size: var(--font-size-lg);
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.key-sections-container .block::before{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--secondary-color);
+    transition: var(--animation-slow);
+    z-index: 2;
+}
+
+.key-sections-container .block:hover::before{
+    top: 0;
+}
+
+.key-sections-container .block span{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--padding-sm);
+    z-index: 3;
+    transition: var(--animation-slow);
+}
+
+.key-sections-container .block p{
+    position: relative;
+    z-index: 3;
+    transition: var(--animation-slow);
+}
+
+.key-sections-container .block .link{
+    position: relative;
+    color: var(--accent-color);
+    font-size: var(--font-size-xxl);
+    z-index: 3;
+    transition: var(--animation-slow);
+}
+
+.key-sections-container .block:hover .link{
+    color: var(--white);
+}
+
+/* Призыв к регистрации */
+.call-for-registration{
+    margin: var(--margin-md);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.call-for-registration h1{
+    color: var(--white);
+}
+
+.call-for-registration-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: var(--padding-md);
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+/* Ответы на частые вопросы */
+.FAQ{
+    height: var(--section-height-small);
+    margin: var(--margin-md);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.FAQ h1{
+    color: var(--white);
+}
+
+/* Контейнер для всех вопросов */
+.FAQ-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--white);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+/* Каждый элемент FAQ */
+.faq-item {
+    width: 100%;
+    margin-bottom: var(--padding-sm);
+    overflow: hidden;
+    transition: all var(--animation-slowest) var(--ease-default);
+    border-radius: var(--border-radius-md);
+    background-color: var(--primary-color);
+}
+
+/* Вопрос (всегда видимый) */
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--padding-sm) var(--padding-md);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--animation-slowest) var(--ease-default);
+    color: var(--white);
+    background-color: var(--primary-color);
+}
+
+.faq-question h2 {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    transition: color var(--animation-fast);
+}
+
+.faq-icon {
+    font-size: var(--font-size-xxl);
+    color: var(--secondary-color);
+    transition: transform var(--animation-fast);
+}
+
+/* Ответ (скрыт по умолчанию) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--animation-slowest) ease;
+    padding: 0 var(--padding-md);
+}
+
+.faq-answer p {
+    padding: 0 0 var(--padding-sm) 0;
+    margin: 0;
+    color: var(--secondary-color);
+    line-height: var(--line-height-relaxed);
+    font-size: var(--font-size-lg);
+}
+
+/* Анимация при наведении */
+.faq-item:hover .faq-answer {
+    max-height: 200px;
+}
+
+.faq-item:hover .faq-icon {
+    transform: rotate(45deg);
+    color: var(--secondary-color);
+}
+
+.faq-item:hover {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    border-bottom-color: transparent;
+}
+
+/* Финальный призыв  */
+.cta-section{
+    height: var(--section-height-small);
+    margin: var(--margin-md);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section h1{
+    color: var(--white);
+}
+
+.cta-section-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--padding-md);
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+}
+
+
+
+
+/* Оптимизация для производительности */
+@media (prefers-reduced-motion: reduce) {
+    .hero-section .hero-block-1::before,
+    .hero-section .hero-block-3::before {
+        animation: none;
+    }
+    
+    .hero-section .hero-block-1,
+    .hero-section .hero-block-2,
+    .hero-section .hero-block-3 {
+        animation: fadeIn var(--animation-normal) ease-out forwards !important;
+    }
+    
+    .hero-section .hero-block-1 > * {
+        animation: fadeIn var(--animation-normal) ease-out forwards !important;
+        animation-delay: var(--animation-fast) !important;
+    }
+    
+    .key-sections-container .left .image-container img,
+    .hero-section .hero-block-3 img {
+        transition: none;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
