@@ -22,8 +22,8 @@ function Header() {
                     <Link href="/" text="Задачи" className="header-link"/>
                 </nav>
                 <div className="user-actions">
-                    <Link href="/" text="Войти" className="auth"/>                    
-                    <Link href="/" text="Зарегестрироваться" className="register"/>
+                    <Link href="/login" text="Войти" className="auth"/>                    
+                    <Link href="/register" text="Зарегестрироваться" className="register"/>
                 </div>
             </div>
         </header>
