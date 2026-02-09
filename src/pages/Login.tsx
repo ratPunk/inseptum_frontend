@@ -10,8 +10,11 @@ import 'aos/dist/aos.css';
 import loginData from "@/types/loginData";
 import { SuccessResponse, ErrorResponse } from "@/types/response";
 import loginUser from "@/api/login";
+import useDisableScroll from "@/hooks/useDisableScroll";
 
 function Login() {
+    useDisableScroll(true); 
+
     const [error, setError] = useState('');
     const [form, setForm] = useState<loginData>(
         {

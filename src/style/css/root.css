@@ -34,6 +34,7 @@ body {
   --white: #FFFFFF;
   --background-color: #0F172A;    
   --text-primary: #F1F5F9;        
+  --exit-color: #EF4444;
 
   --gradient-blue: linear-gradient(135deg, #1F2937 0%, #3B82F6 100%);
   --gradient-orange: linear-gradient(135deg, #df6915 0%, #F97316 100%);

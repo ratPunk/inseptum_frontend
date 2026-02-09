@@ -51,7 +51,7 @@
     background-color: var(--secondary-color);
     border-radius: var(--border-radius-md);
     padding: 0.5rem 1rem;
-    color: var(--while);
+    color: var(--white);
 }
 
 .register{
@@ -77,6 +77,28 @@
     color: var(--accent-color);
 }
 
+.user-name{
+    padding: 0.5rem 1rem;
+}
+.user-name:hover{
+    background-color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+}
+
+.exit{
+    color: var(--exit-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    transition: var(--animation-normal);
+}
+.exit:hover{
+    background-color: var(--exit-color);
+    color: var(--white);
+}
 
 /* footer-icon-link */
 .footer-icon-link{

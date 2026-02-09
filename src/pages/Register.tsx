@@ -10,8 +10,11 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import registerData from "@/types/registerData";
+import useDisableScroll from "@/hooks/useDisableScroll";
 
 function Register() {
+    useDisableScroll(true); 
+
     const [error, setError] = useState('');
     const [form, setForm] = useState<registerData>(
         {
