@@ -136,7 +136,7 @@
 }
 
 .error {
-    display: none;
+    /* display: none; */
     color: #ff6b6b;
     background: rgba(255, 107, 107, 0.1);
     padding: 0.75rem;
@@ -146,10 +146,6 @@
     font-size: 0.9rem;
     font-weight: var(--font-weight-normal);
     margin: 0;
-    
-    &.visible {
-        display: block;
-    }
     
     @media (max-width: 480px) {
         padding: 0.6rem;
