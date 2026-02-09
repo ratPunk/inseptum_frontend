@@ -5,28 +5,21 @@
     justify-content: center;
     padding: 1rem;
     box-sizing: border-box;
+
+    transition: var(--animation-normal);
 }
 
 .register-container {
     display: flex;
     width: 100%;
     max-width: 900px;
-    min-height: 500px; 
+    min-height: 500px;
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     background-color: var(--background-color);
-    
-    /* Адаптивность */
-    @media (max-width: 768px) {
-        flex-direction: column;
-        max-width: 500px;
-        min-height: auto;
-    }
-    
-    @media (max-width: 480px) {
-        border-radius: var(--border-radius-sm);
-    }
+
+    transition: var(--animation-normal);
 }
 
 .img-container {
@@ -34,13 +27,8 @@
     min-height: 400px;
     position: relative;
     overflow: hidden;
-    
-    @media (max-width: 768px) {
-        flex: 0 0 250px; 
-        min-height: 250px;
-        width: 100%;
-        border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
-    }
+
+    transition: var(--animation-normal);
 }
 
 .img-container img {
@@ -50,12 +38,6 @@
     object-position: center;
     transition: transform var(--animation-normal) ease;
     will-change: transform;
-    
-    @media (hover: hover) {
-        &:hover {
-            transform: scale(1.05);
-        }
-    }
 }
 
 .form-container {
@@ -65,28 +47,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 100%; 
-    
-    @media (max-width: 768px) {
-        border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
-        min-height: auto;
-        padding: 2rem 1.5rem;
-    }
-    
-    @media (max-width: 480px) {
-        padding: 1.5rem 1rem;
-    }
+    min-height: 100%;
+
+    transition: var(--animation-normal);
 }
 
-.form-container > * {
+.form-container>* {
     width: 100%;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    
-    @media (max-width: 768px) {
-        max-width: 100%;
-    }
 }
 
 .form-container h1 {
@@ -94,27 +64,19 @@
     color: var(--white);
     text-align: center;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    
-    @media (max-width: 480px) {
-        margin-bottom: 1rem;
-    }
 }
 
-.form-container > p:first-of-type {
+.form-container>p:first-of-type {
     align-self: flex-end;
     text-align: right;
     color: var(--white);
     opacity: 0.8;
     margin: 0 0 2rem 0;
     font-size: 0.9rem;
-    
-    @media (max-width: 768px) {
-        margin-bottom: 1.5rem;
-    }
 }
 
 .error {
-    display: none;
+    /* display: none; */
     color: #ff6b6b;
     background: rgba(255, 107, 107, 0.1);
     padding: 0.75rem;
@@ -129,11 +91,6 @@
     flex-direction: column;
     gap: 1.25rem;
     margin-bottom: 2rem;
-    
-    @media (max-width: 480px) {
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
 }
 
 .form-container .link-container {
@@ -141,11 +98,6 @@
     margin-top: 1.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    
-    @media (max-width: 480px) {
-        margin-top: 1rem;
-        padding-top: 1rem;
-    }
 }
 
 .form-container p {
@@ -154,10 +106,6 @@
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0;
-    
-    @media (max-width: 480px) {
-        font-size: 0.875rem;
-    }
 }
 
 .form-container a {
@@ -165,25 +113,8 @@
     text-decoration: none;
     transition: all var(--animation-fast) ease;
     position: relative;
-    
-    &:hover {
-        color: var(--accent-color);
-        
-        &::after {
-            width: 100%;
-        }
-    }
-    
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-color);
-        transition: width var(--animation-normal) ease;
-    }
+
+ 
 }
 
 /* Для очень маленьких экранов */
@@ -192,16 +123,16 @@
         min-height: auto;
         padding: 0.5rem;
     }
-    
+
     .register-container {
         min-height: 350px;
         max-width: 800px;
     }
-    
+
     .img-container {
         min-height: 300px;
     }
-    
+
     .form-container {
         padding: 1.5rem;
     }
@@ -213,9 +144,8 @@
         max-width: 1000px;
         min-height: 600px;
     }
-    
+
     .img-container {
         min-height: 500px;
     }
 }
-
