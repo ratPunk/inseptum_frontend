@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import userDataRespose from "@/types/userDatarespose";
 import { IoExit } from "react-icons/io5";
-
+import user1 from "@/style/svg/user1.svg";
 
 function Header() {
     const location = useLocation();
@@ -17,7 +17,7 @@ function Header() {
         if(storeduser !== null){
             setUser(JSON.parse(storeduser));
         }
-    })
+    }, [])
 
     return (
         <header id="Header" >
@@ -28,14 +28,15 @@ function Header() {
                 </div>
                 <nav className="nav">
                     <Link href="/home" text="Главная" className={`header-link ${location.pathname === "/home" ? "active" : ""}`} />
-                    <Link href="/" text="Статьи" className="header-link" />
+                    <Link href="/articles" text="Статьи" className={`header-link ${location.pathname === "/articles" ? "active" : ""}`} />
                     <Link href="/" text="Тесты" className="header-link" />
                     <Link href="/" text="Задачи" className="header-link" />
                 </nav>
                 <div className="user-actions">
                     {user ? (
                         <>
-                        <Link href="/profile" text={user.username} className="user-name" />
+                        <Link href="/profile" image={user1} imageStyle="user-icon small-user-icon" />
+                        <Link href="/profile" text={user.username} className="header-user-name" /> 
                         |
                         <Link href="/profile" text="Выход" className="exit" icon={IoExit}/>
                         </>
