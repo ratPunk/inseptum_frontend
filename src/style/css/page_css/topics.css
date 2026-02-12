@@ -1,0 +1,65 @@
+#Topics{
+    min-height: 90vh;
+}
+.topic-container {
+    padding: var(--padding-md);
+}
+
+.topic-container h1{
+    margin: 0;
+    margin-bottom: var(--margin-md);
+}
+
+
+
+
+.topic-cards-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--margin-md)
+}
+
+
+/* Базовый стиль для всех заголовков */
+.topic-title {
+    padding: .5rem 1rem;
+    border-radius: var(--border-radius-md);
+    color: var(--white);
+    transition: all var(--animation-fast) var(--ease-default);
+}
+
+/* Bootstrap */
+.topic-title-bootstrap {
+    background-color: var(--bootstrap-color);
+    color: var(--white);
+}
+
+/* HTML */
+.topic-title-html {
+    background-color: var(--html-color);
+    color: var(--white);
+}
+
+/* PHP */
+.topic-title-php {
+    background-color: var(--php-color);
+    color: var(--white);
+}
+
+/* JavaScript */
+.topic-title-javascript {
+    background-color: var(--javascript-color);
+    color: var(--white); 
+}
+
+/* Database */
+.topic-title-database {
+    background-color: var(--database-color);
+    color: var(--white);
+}
+
+/* Structure */
+.topic-title-structure {
+    background-color: var(--structure-color);
+    color: var(--white);
+}

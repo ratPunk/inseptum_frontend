@@ -1,0 +1,161 @@
+.topic-card {
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.topic-card .topic-card-image {
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    position: relative;
+}
+
+.topic-card .topic-card-image img {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.topic-card-content {
+    padding: var(--padding-sm);
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.topic-card-content::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    /* Позади текста */
+    top: 1.3rem;
+    right: 1.6rem;
+    width: 20px;
+    height: 20px;
+    background: #00838d;
+    border-radius: 32px;
+    transform: scale(1);
+    transition: transform .5s ease-out;
+}
+
+.topic-card-content:hover::before {
+    transform: scale(15);     /* Увеличивается, закрывая карточку */
+}
+
+.topic-card-content:hover h1 {
+    color: white;            /* Текст становится белым */
+}
+
+.topic-card-content .topic-card-title {
+    margin: 0;
+    margin-top: 0.5rem;
+    z-index: 2;
+}
+
+.topic-card-content .topic-card-description {
+    z-index: 2;
+}
+
+.topic-card-content .topic-card-tag {
+    margin: 0;
+    background-color: var(--primary-color);
+    padding: .4rem .5rem .5rem .5rem;
+    border-radius: var(--border-radius-md);
+    color: var(--white);
+    font-size: .9rem;
+    width: fit-content;
+    align-self: end;
+    z-index: 2;
+    font-size: 1.1rem;
+    transition: var(--animation-slow);
+}
+
+.topic-card-content .icon{
+    display: inline-block;
+    position: absolute;
+    top: 3rem;
+    right: 2.2rem;
+    z-index: 2;
+    transform: scale(8);
+    opacity: 0;
+    transition: var(--animation-slow);
+    transform: translate(60px, -60px);
+} 
+
+.topic-card-content:hover .icon{
+    opacity: .5;
+    transform: translate(0px, 0px);
+    transform: scale(8);
+}
+.topic-card-content:hover .topic-card-tag{
+    /* transform: translateY(-60px); */
+    /* transform: translateX(60px); */
+    transform: translate(60px, -60px);
+}
+
+.topic-card-content .link{
+    z-index: 2;
+    margin-top: auto;
+}
+
+
+.topic-card-bootstrap .topic-card-content::before{
+    background-color: var(--bootstrap-color);
+}
+
+.topic-card-bootstrap .topic-card-content .topic-card-tag{
+    background-color: var(--bootstrap-color);
+}
+
+/* JavaScript */
+.topic-card-javascript .topic-card-content::before {
+    background-color: var(--javascript-color);
+}
+
+.topic-card-javascript .topic-card-content .topic-card-tag {
+    background-color: var(--javascript-color);
+}
+
+/* HTML */
+.topic-card-html .topic-card-content::before {
+    background-color: var(--html-color);
+}
+
+.topic-card-html .topic-card-content .topic-card-tag {
+    background-color: var(--html-color);
+}
+
+/* PHP */
+.topic-card-php .topic-card-content::before {
+    background-color: var(--php-color);
+}
+
+.topic-card-php .topic-card-content .topic-card-tag {
+    background-color: var(--php-color);
+}
+
+/* Database */
+.topic-card-database .topic-card-content::before {
+    background-color: var(--database-color);
+}
+
+.topic-card-database .topic-card-content .topic-card-tag {
+    background-color: var(--database-color);
+}
+
+/* Structure */
+.topic-card-structure .topic-card-content::before {
+    background-color: var(--structure-color);
+}
+
+.topic-card-structure .topic-card-content .topic-card-tag {
+    background-color: var(--structure-color);
+}
