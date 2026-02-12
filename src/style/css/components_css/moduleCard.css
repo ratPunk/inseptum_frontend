@@ -1,0 +1,59 @@
+.module-card{
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius-md);
+    position: relative;
+    cursor: pointer;
+}
+
+.module-card .active-bootstrap{
+    background-color: var(--bootstrap-color);
+}
+.module-card .active-javascript{
+    background-color: var(--javascript-color);
+}
+.module-card .active-html{
+    background-color: var(--html-color);
+}
+.module-card .active-php{
+    background-color: var(--php-color);
+}
+.module-card .active-database{
+    background-color: var(--database-color);
+}
+.module-card .active-structure{
+    background-color: var(--structure-color);
+}
+
+
+.module-card-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    border-radius: var(--border-radius-md);
+    transition: var(--animation-normal);
+}
+
+.module-card-content:hover{
+    background-color: var(--secondary-color);
+}
+
+.bootstrap:hover{
+    background-color: var(--bootstrap-color);
+}
+.javascript:hover{
+    background-color: var(--javascript-color);
+}
+.html:hover{
+    background-color: var(--html-color);
+}
+.php:hover{
+    background-color: var(--php-color);
+}
+.database:hover{
+    background-color: var(--database-color);
+}
+.structure:hover{
+    background-color: var(--structure-color);
+}

@@ -10,7 +10,7 @@
     /* background-color: rgba(217, 217, 217, 0.2); */
 
     transition: all 0.3s ease;
-    animation: headerDown 2.2s ease;
+    animation: headerDown 1.5s ease;
 }
 
 @keyframes headerDown {

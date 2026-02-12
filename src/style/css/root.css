@@ -36,6 +36,24 @@ body {
   --text-primary: #F1F5F9;        
   --exit-color: #EF4444;
 
+   /* Bootstrap - фиолетовый (официальный цвет) */
+    --bootstrap-color: #7952b3;
+    
+    /* JavaScript - желтый (официальный цвет) */
+    --javascript-color: #bdaa1d;
+    
+    /* HTML - оранжевый (ассоциируется с HTML5) */
+    --html-color: #e34c26;
+    
+    /* PHP - сиреневый (официальный логотип) */
+    --php-color: #777bb4;
+    
+    /* Database - синий (ассоциация с данными/SQL) */
+    --database-color: #336791;
+    
+    /* Structure - серо-зеленый (нейтральный для структуры) */
+    --structure-color: #2e8b57;
+
   --gradient-blue: linear-gradient(135deg, #1F2937 0%, #3B82F6 100%);
   --gradient-orange: linear-gradient(135deg, #df6915 0%, #F97316 100%);
   --gradient-accent: linear-gradient(135deg, #10B981 0%, #67FFCD 100%);

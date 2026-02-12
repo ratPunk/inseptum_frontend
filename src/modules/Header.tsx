@@ -27,8 +27,10 @@ function Header() {
                     <h1 className="logo-text">Inseptum</h1>
                 </div>
                 <nav className="nav">
-                    <Link href="/home" text="Главная" className={`header-link ${location.pathname === "/home" ? "active" : ""}`} />
-                    <Link href="/articles" text="Статьи" className={`header-link ${location.pathname === "/articles" ? "active" : ""}`} />
+                    <Link href="/home" text="Главная" className={`header-link ${location.pathname === "/home" ? "link-active" : ""}`} />
+                    <Link href="/modules" text="Модули" className={`header-link ${location.pathname === "/modules" ? "link-active" : ""}`} />
+                    <Link href="/" text="Темы" className={`header-link ${location.pathname === "/articles" ? "link-active" : ""}`} />
+                    <Link href="/articles" text="Статьи" className={`header-link ${location.pathname === "/articles" ? "link-active" : ""}`} />
                     <Link href="/" text="Тесты" className="header-link" />
                     <Link href="/" text="Задачи" className="header-link" />
                 </nav>
