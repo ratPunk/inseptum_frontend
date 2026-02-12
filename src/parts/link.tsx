@@ -7,14 +7,15 @@ interface LinkProps {
     className?: string;
     icon?: IconType | undefined;
     image?: string;
+    imageStyle?: string;
 }
 
-function Link({ href, text, className, icon: Icon, image }: LinkProps) {
+function Link({ href, text, className, icon: Icon, image, imageStyle }: LinkProps) {
     return (
         <>
             <a href={href} className={`link ${className}`}>
                 {Icon && <Icon />}
-                {image ? (<img src={image} alt="" />) : null}
+                {image ? (<img src={image} alt="" className={imageStyle}/>) : null}
                 {text}
             </a>
         </>

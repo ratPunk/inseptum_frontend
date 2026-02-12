@@ -17,7 +17,7 @@
     padding: 0.5rem 1rem;
 }
 
-.active{
+.link-active{
     background-color: var(--accent-color);
     padding: 0.5rem 1rem;
     color: var(--primary-color);
@@ -45,6 +45,7 @@
 .cta-link:hover{
     background-color: var(--primary-color);
     color: var(--accent-color);
+    outline: 1px solid var(--accent-color);
 }
 
 .cta-link-hero{
@@ -77,10 +78,10 @@
     color: var(--accent-color);
 }
 
-.user-name{
+.header-user-name{
     padding: 0.5rem 1rem;
 }
-.user-name:hover{
+.header-user-name:hover{
     background-color: var(--accent-color);
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius-md);
@@ -101,9 +102,9 @@
 }
 
 /* footer-icon-link */
-.footer-icon-link{
+/* .footer-icon-link{
     
-}
+} */
 .footer-icon-link img{
     width: 50px !important;
     height: auto !important;
@@ -125,4 +126,20 @@
     background-color: var(--accent-color);
     padding: 0.5rem;
     border-radius: var(--border-radius-md);
+}
+
+
+
+
+
+.user-icon{
+    border-radius: 50%;
+    width: 100px !important;
+    height: 100px !important;
+}
+.small-user-icon{
+    border-radius: 50%;
+    width: 50px !important;
+    height: 50px !important;
+    margin-right: -rem;
 }
