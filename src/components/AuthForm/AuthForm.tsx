@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { FiMail, FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
+import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 import Input from '@/components/ui/Input/Input';
 import Button from '@/components/ui/Button/Button';
@@ -14,13 +15,13 @@ import './AuthForm.css';
 type AuthMode = 'login' | 'register';
 
 interface LoginFields {
-  email: string;
+  login: string;
   password: string;
 }
 
 interface RegisterFields {
   name: string;
-  email: string;
+  login: string;
   password: string;
   confirmPassword: string;
 }
@@ -28,9 +29,6 @@ interface RegisterFields {
 type FieldErrors<T> = Partial<Record<keyof T, string>>;
 
 /* ─── Validation ─── */
-const validateEmail = (v: string) =>
-  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Введите корректный email';
-
 const validatePassword = (v: string) =>
   v.length >= 6 ? '' : 'Минимум 6 символов';
 
@@ -53,6 +51,7 @@ function extractApiError(err: unknown): string {
 /* ─── Component ─── */
 const AuthForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   const [mode, setMode] = useState<AuthMode>('login');
   const [animating, setAnimating] = useState(false);
@@ -63,13 +62,13 @@ const AuthForm: React.FC = () => {
   const [serverError, setServerError] = useState('');
 
   /* Login state */
-  const [loginFields, setLoginFields] = useState<LoginFields>({ email: '', password: '' });
-  const [loginErrors, setLoginErrors] = useState<FieldErrors<LoginFields>>({});
+    const [loginFields, setLoginFields] = useState<LoginFields>({ login: '', password: '' });
+    const [loginErrors, setLoginErrors] = useState<FieldErrors<LoginFields>>({});
 
   /* Register state */
   const [regFields, setRegFields] = useState<RegisterFields>({
     name: '',
-    email: '',
+    login: '',
     password: '',
     confirmPassword: '',
   });
@@ -96,7 +95,7 @@ const AuthForm: React.FC = () => {
     e.preventDefault();
     setServerError('');
     const errors: FieldErrors<LoginFields> = {
-      email: validateEmail(loginFields.email),
+      login: loginFields.login.trim().length >= 2 ? '' : 'Минимум 2 символа',
       password: validatePassword(loginFields.password),
     };
     const hasErrors = Object.values(errors).some(Boolean);
@@ -106,11 +105,11 @@ const AuthForm: React.FC = () => {
     setLoading(true);
     try {
       const data = await authApi.login({
-        email: loginFields.email.trim().toLowerCase(),
+        login: loginFields.login.trim(),
         password: loginFields.password,
       });
       dispatch(setCredentials({ user: data.user, token: data.token }));
-      setSuccess(true);
+      navigate('/profile');
     } catch (err) {
       setServerError(extractApiError(err));
     } finally {
@@ -124,7 +123,7 @@ const AuthForm: React.FC = () => {
     setServerError('');
     const errors: FieldErrors<RegisterFields> = {
       name: validateName(regFields.name),
-      email: validateEmail(regFields.email),
+      login: regFields.login.trim().length >= 2 ? '' : 'Минимум 2 символа',
       password: validatePassword(regFields.password),
       confirmPassword:
         regFields.confirmPassword === regFields.password ? '' : 'Пароли не совпадают',
@@ -137,11 +136,11 @@ const AuthForm: React.FC = () => {
     try {
       const data = await authApi.register({
         name: regFields.name.trim(),
-        email: regFields.email.trim().toLowerCase(),
+        login: regFields.login.trim(),
         password: regFields.password,
       });
       dispatch(setCredentials({ user: data.user, token: data.token }));
-      setSuccess(true);
+      navigate('/profile');
     } catch (err) {
       setServerError(extractApiError(err));
     } finally {
@@ -202,14 +201,14 @@ const AuthForm: React.FC = () => {
 
               <div className="auth-fields">
                 <Input
-                  label="Email"
-                  type="email"
-                  placeholder="you@example.com"
-                  autoComplete="email"
-                  leftIcon={<FiMail size={16} />}
-                  value={loginFields.email}
-                  onChange={e => setLoginFields(f => ({ ...f, email: e.target.value }))}
-                  error={loginErrors.email}
+                  label="Логин"
+                  type="text"
+                  placeholder="your_login"
+                  autoComplete="username"
+                  leftIcon={<FiUser size={16} />}
+                  value={loginFields.login}
+                  onChange={e => setLoginFields(f => ({ ...f, login: e.target.value }))}
+                  error={loginErrors.login}
                 />
                 <Input
                   label="Пароль"
@@ -281,14 +280,14 @@ const AuthForm: React.FC = () => {
                   error={regErrors.name}
                 />
                 <Input
-                  label="Email"
-                  type="email"
-                  placeholder="you@example.com"
-                  autoComplete="email"
-                  leftIcon={<FiMail size={16} />}
-                  value={regFields.email}
-                  onChange={e => setRegFields(f => ({ ...f, email: e.target.value }))}
-                  error={regErrors.email}
+                  label="Логин"
+                  type="text"
+                  placeholder="your_login"
+                  autoComplete="username"
+                  leftIcon={<FiUser size={16} />}
+                  value={regFields.login}
+                  onChange={e => setRegFields(f => ({ ...f, login: e.target.value }))}
+                  error={regErrors.login}
                 />
                 <Input
                   label="Пароль"

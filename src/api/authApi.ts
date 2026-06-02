@@ -18,7 +18,8 @@ api.interceptors.request.use((config) => {
 export interface AuthUser {
   id: number;
   name: string;
-  email: string;
+  login: string;
+  email?: string;
   created_at: string;
 }
 
@@ -29,13 +30,13 @@ export interface AuthResponse {
 }
 
 export interface LoginPayload {
-  email: string;
+  login: string;
   password: string;
 }
 
 export interface RegisterPayload {
   name: string;
-  email: string;
+  login: string;
   password: string;
 }
 

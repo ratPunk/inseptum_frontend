@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(31, 41, 55, 0.6);
+  background-color: rgba(31, 41, 55, 0.75);
   border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: var(--border-radius-sm);
   padding: 0 0.875rem;
@@ -50,7 +50,7 @@
 .ui-input-field--focused {
   border-color: var(--secondary-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), var(--shadow-default);
-  background-color: rgba(31, 41, 55, 0.85);
+  background-color: rgba(31, 41, 55, 0.75);
 }
 
 .ui-input-field--error {
@@ -72,17 +72,68 @@
   caret-color: var(--secondary-color);
 }
 
-.ui-input-element::placeholder {
-  color: rgba(241, 245, 249, 0.35);
-  font-weight: var(--font-weight-light);
+input.ui-input-element::placeholder {
+  color: rgba(241, 245, 249, 0.3) !important;
+  font-weight: 200 !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: rgba(241, 245, 249, 0.3) !important;
+  text-shadow: none !important;
+}
+
+input.ui-input-element::-webkit-input-placeholder {
+  color: rgba(241, 245, 249, 0.3) !important;
+  -webkit-text-fill-color: rgba(241, 245, 249, 0.3) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+input.ui-input-element::-moz-placeholder {
+  color: rgba(241, 245, 249, 0.3) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+input.ui-input-element:-ms-input-placeholder {
+  color: rgba(241, 245, 249, 0.3) !important;
+  opacity: 1 !important;
+}
+
+/* Autofill styles for dark theme */
+input.ui-input-element:-webkit-autofill,
+input.ui-input-element:-webkit-autofill:hover,
+input.ui-input-element:-webkit-autofill:focus,
+input.ui-input-element:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(31, 41, 55, 0.75) inset !important;
+  box-shadow: 0 0 0 1000px rgba(31, 41, 55, 0.75) inset !important;
+  caret-color: var(--secondary-color);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input.ui-input-element.autofill-hack:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(31, 41, 55, 0.75) inset !important;
+}
+
+input.ui-input-element.autofill-hack:-moz-autofill {
+  box-shadow: 0 0 0 1000px rgba(31, 41, 55, 0.75) inset !important;
+}
+
+input.ui-input-element::input-placeholder {
+  color: rgba(241, 245, 249, 0.3) !important;
+  opacity: 1 !important;
 }
 
 .ui-input-element:-webkit-autofill,
 .ui-input-element:-webkit-autofill:hover,
 .ui-input-element:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--text-primary);
-  -webkit-box-shadow: 0 0 0 1000px rgba(31, 41, 55, 0.9) inset;
+  -webkit-text-fill-color: var(--text-primary) !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+input.ui-input-element:not(:placeholder-shown) {
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
 }
 
 .ui-input-icon {
