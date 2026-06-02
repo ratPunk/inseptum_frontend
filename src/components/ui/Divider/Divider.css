@@ -1,0 +1,27 @@
+.ui-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+.ui-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(59, 130, 246, 0.25),
+    transparent
+  );
+}
+
+.ui-divider-label {
+  font-size: var(--font-size-sm);
+  color: rgba(241, 245, 249, 0.4);
+  font-weight: var(--font-weight-light);
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

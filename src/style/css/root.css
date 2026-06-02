@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@200;400;600;700&display=swap');
+
+* {
+  font-family: 'Jura', sans-serif;
+  font-weight: 200;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Jura', sans-serif;
+  /* background-color: #1F2937; */
+  /* background-color: #FFF7ED; */
+  /* background-color: #F97316; */
+  overflow-x:hidden;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+/* Для всего документа */
+::selection {
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+/* Для поддержки Firefox */
+::-moz-selection {
+    background-color: var(--secondary-color);
+    color: white;
+}
+/* "Глубокий океан" (Dark Blue Dominant) */
+:root {
+  --primary-color: #1F2937;       
+  --secondary-color: #3B82F6;  
+  --tertiary-color: #F97316;
+  --accent-color: #10B981;
+  --accent-color-rgb: 76, 175, 80;        
+  --light-accent: #67FFCD;        
+  --white: #FFFFFF;
+  --background-color: #0F172A;    
+  --text-primary: #F1F5F9;        
+  --exit-color: #EF4444;
+
+   /* Bootstrap - фиолетовый (официальный цвет) */
+    --bootstrap-color: #7952b3;
+    
+    /* JavaScript - желтый (официальный цвет) */
+    --javascript-color: #bdaa1d;
+    
+    /* HTML - оранжевый (ассоциируется с HTML5) */
+    --html-color: #e34c26;
+    
+    /* PHP - сиреневый (официальный логотип) */
+    --php-color: #777bb4;
+    
+    /* Database - синий (ассоциация с данными/SQL) */
+    --database-color: #336791;
+    
+    /* Structure - серо-зеленый (нейтральный для структуры) */
+    --structure-color: #2e8b57;
+
+  --gradient-blue: linear-gradient(135deg, #1F2937 0%, #3B82F6 100%);
+  --gradient-orange: linear-gradient(135deg, #df6915 0%, #F97316 100%);
+  --gradient-accent: linear-gradient(135deg, #10B981 0%, #67FFCD 100%);
+  --gradient-shine: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+
+  --shadow-default: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 10px 30px rgba(59, 130, 246, 0.2);
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --padding-sm: 1rem;
+  --padding-md: 2rem;
+  --padding-lg: 3rem;
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
+  --margin-lg: 3rem;
+  --animation-fast: 0.3s;
+  --animation-normal: 0.5s;
+  --animation-slow: 0.8s;
+  --animation-slower: 1.2s;
+  --animation-slowest: 1.5s;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --section-height-small: 44vh;
+  --section-height-medium: 60vh;
+  --section-height-large: 80vh;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-heading: 2.5rem;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+  --font-weight-light: 200;
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+}
+
+
+
+/* Стилизация скроллбара */
+::-webkit-scrollbar {
+    width: 12px; /* Ширина вертикального скролла */
+    height: 12px; /* Высота горизонтального скролла */
+    background-color: var(--primary-color); /* Фон = --primary-color */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--primary-color); /* Фон трека = --primary-color */
+    border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color); /* Ползунок = --secondary-color */
+    border-radius: var(--border-radius-sm);
+    border: 2px solid var(--primary-color); /* Обводка под цвет фона */
+    transition: var(--animation-normal);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--tertiary-color); /* При наведении можно использовать тернарный */
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--accent-color); /* При нажатии */
+}
+
+/* Для Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) var(--primary-color);
+    /* scrollbar-color: ползунок трек */
+}
+
+/* Для Edge и IE */
+body {
+    -ms-overflow-style: none; /* Скрываем стандартный скролл IE */
+}
