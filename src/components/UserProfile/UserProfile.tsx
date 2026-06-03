@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { FiUser, FiMail, FiCalendar, FiLogOut, FiArrowLeft } from 'react-icons/fi';
+import { FiUser, FiMail, FiCalendar, FiLogOut, FiArrowLeft, FiShield, FiSettings } from 'react-icons/fi';
 import { RootState } from '@store/store';
 import { clearCredentials } from '@store/authSlice';
 import type { AppDispatch } from '@store/store';
@@ -51,10 +51,6 @@ const UserProfile: React.FC = () => {
 
   return (
     <div className="profile-page">
-      <div className="profile-orb profile-orb--blue" aria-hidden="true" />
-      <div className="profile-orb profile-orb--orange" aria-hidden="true" />
-      <div className="profile-orb profile-orb--accent" aria-hidden="true" />
-
       <div className="profile-card">
         <Link to="/" className="profile-back">
           <FiArrowLeft size={18} />
@@ -101,9 +97,31 @@ const UserProfile: React.FC = () => {
               <span className="profile-detail-value">{formatDate(user.created_at)}</span>
             </div>
           </div>
+
+          <div className="profile-detail-item">
+            <div className="profile-detail-icon">
+              <FiShield size={18} />
+            </div>
+            <div className="profile-detail-content">
+              <span className="profile-detail-label">Роль</span>
+              <span className="profile-detail-value">
+                {user.role === 'admin' ? 'Администратор' : 'Пользователь'}
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="profile-actions">
+          {user.role === 'admin' && (
+            <Link to="/admin">
+              <Button
+                variant="primary"
+                leftIcon={<FiSettings size={16} />}
+              >
+                Админ панель
+              </Button>
+            </Link>
+          )}
           <Button
             variant="secondary"
             onClick={handleLogout}

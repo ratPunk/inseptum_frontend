@@ -34,16 +34,27 @@ body {
 }
 /* "Глубокий океан" (Dark Blue Dominant) */
 :root {
-  --primary-color: #1F2937;       
-  --secondary-color: #3B82F6;  
+  --primary-color: #1F2937;
+  --secondary-color: #3B82F6;
   --tertiary-color: #F97316;
   --accent-color: #10B981;
-  --accent-color-rgb: 76, 175, 80;        
-  --light-accent: #67FFCD;        
+  --accent-color-rgb: 76, 175, 80;
+  --light-accent: #67FFCD;
   --white: #FFFFFF;
-  --background-color: #0F172A;    
-  --text-primary: #F1F5F9;        
+  --background-color: #0F172A;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
   --exit-color: #EF4444;
+
+  /* Semantic aliases for components */
+  --accent-blue: #3B82F6;
+  --accent-orange: #F97316;
+
+  /* Backward-compat alias for profile detail icon */
+  --bg-primary: var(--background-color);
+  --bg-secondary: var(--primary-color);
+  --bg-tertiary: #293548;
+  --border-color: rgba(255, 255, 255, 0.08);
 
    /* Bootstrap - фиолетовый (официальный цвет) */
     --bootstrap-color: #7952b3;

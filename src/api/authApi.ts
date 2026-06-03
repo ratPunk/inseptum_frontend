@@ -14,12 +14,28 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Handle 401 responses
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // Only clear if explicitly a 401 and not a login/register request
+    if (error.response?.status === 401 && !error.config?.url?.includes('/auth/')) {
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('auth_user');
+    }
+    return Promise.reject(error);
+  }
+);
+
 /* ─── Types ─── */
+export type UserRole = 'admin' | 'user';
+
 export interface AuthUser {
   id: number;
   name: string;
   login: string;
   email?: string;
+  role: UserRole;
   created_at: string;
 }
 

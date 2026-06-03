@@ -1,5 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { AuthUser } from '@api/authApi';
+
+// Type for user
+export interface AuthUser {
+  id: number;
+  name: string;
+  login: string;
+  email?: string;
+  role: 'admin' | 'user';
+  created_at: string;
+}
 
 interface AuthState {
   user: AuthUser | null;
@@ -8,11 +17,12 @@ interface AuthState {
 }
 
 const storedToken = localStorage.getItem('auth_token');
+const storedUser = localStorage.getItem('auth_user');
 
 const initialState: AuthState = {
-  user: null,
+  user: storedUser ? JSON.parse(storedUser) : null,
   token: storedToken,
-  isAuthenticated: false,
+  isAuthenticated: !!storedToken && !!storedUser,
 };
 
 const authSlice = createSlice({
@@ -24,15 +34,21 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isAuthenticated = true;
       localStorage.setItem('auth_token', action.payload.token);
+      localStorage.setItem('auth_user', JSON.stringify(action.payload.user));
+    },
+    updateUser(state, action: PayloadAction<AuthUser>) {
+      state.user = action.payload;
+      localStorage.setItem('auth_user', JSON.stringify(action.payload));
     },
     clearCredentials(state) {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
       localStorage.removeItem('auth_token');
+      localStorage.removeItem('auth_user');
     },
   },
 });
 
-export const { setCredentials, clearCredentials } = authSlice.actions;
+export const { setCredentials, updateUser, clearCredentials } = authSlice.actions;
 export default authSlice.reducer;
