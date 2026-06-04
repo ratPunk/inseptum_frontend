@@ -25,6 +25,18 @@ interface ArticleContent {
 
 type LoadState = 'idle' | 'loading' | 'success' | 'error';
 
+/**
+ * Convert heading text to URL-friendly slug
+ */
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^а-яёa-z0-9\s-]/g, '') // Remove non-alphanumeric characters
+    .replace(/\s+/g, '-')              // Replace spaces with hyphens
+    .replace(/-+/g, '-')               // Remove consecutive hyphens
+    .trim();
+}
+
 const ArticlePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<ArticleContent | null>(null);
@@ -118,11 +130,10 @@ const ArticlePage: React.FC = () => {
     };
   }, [fetchArticle]);
 
-  // Scroll spy: highlight active heading in TOC
+  // Inject IDs into HTML headings to match TOC entries, then set up scroll spy
   useEffect(() => {
     if (!data?.toc?.length) return;
 
-    const headingIds = data.toc.map((e) => e.id);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -137,10 +148,28 @@ const ArticlePage: React.FC = () => {
       },
     );
 
-    // Observe all headings after HTML is rendered
+    // Inject IDs into headings after HTML is rendered, then observe them
     const timeoutId = setTimeout(() => {
-      headingIds.forEach((hId) => {
-        const el = document.getElementById(hId);
+      const htmlContainer = htmlRef.current;
+      if (!htmlContainer) return;
+
+      // Find all headings and inject slugs matching TOC entries
+      const headings = htmlContainer.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      let tocIndex = 0;
+
+      headings.forEach((heading) => {
+        if (tocIndex < data.toc.length) {
+          if (!heading.id) {
+            // Use slugified text to match TOC links
+            heading.id = slugify(data.toc[tocIndex].text);
+          }
+          tocIndex++;
+        }
+      });
+
+      // Now observe all headings with slugs
+      data.toc.forEach((entry) => {
+        const el = document.getElementById(slugify(entry.text));
         if (el) observer.observe(el);
       });
     }, 100);
