@@ -144,6 +144,10 @@
   margin-top: auto;
 }
 
+.admin-card--clickable {
+  cursor: pointer;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

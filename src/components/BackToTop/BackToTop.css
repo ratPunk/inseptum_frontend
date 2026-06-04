@@ -1,0 +1,66 @@
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-color, #3B82F6);
+  border: 2px solid var(--secondary-color, #3B82F6);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.back-to-top:hover {
+  background: var(--tertiary-color, #F97316);
+  border-color: var(--tertiary-color, #F97316);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px rgba(249, 115, 22, 0.5);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}
+
+.back-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid var(--accent-color, #10B981);
+  outline-offset: 3px;
+}
+
+.back-to-top svg {
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Responsive positioning */
+@media (max-width: 480px) {
+  .back-to-top {
+    bottom: 1.5rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .back-to-top svg {
+    width: 18px;
+    height: 18px;
+  }
+}

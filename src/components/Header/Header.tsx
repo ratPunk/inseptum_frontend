@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { FiHome, FiUser, FiLogOut, FiMenu, FiX, FiBookOpen, FiSettings } from 'react-icons/fi';
+import { FiUser, FiLogOut, FiMenu, FiX, FiBookOpen, FiSettings } from 'react-icons/fi';
 import { RootState } from '@store/store';
 import { clearCredentials } from '@store/authSlice';
 import type { AppDispatch } from '@store/store';
@@ -57,10 +57,6 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="header-nav">
-          <Link to="/profile" className={`header-nav-link${location.pathname === '/profile' ? ' header-nav-link--active' : ''}`}>
-            <FiHome size={18} />
-            <span>Главная</span>
-          </Link>
           <Link to="/articles" className={`header-nav-link${location.pathname === '/articles' ? ' header-nav-link--active' : ''}`}>
             <FiBookOpen size={18} />
             <span>Статьи</span>
@@ -128,14 +124,6 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="header-mobile-menu">
           <nav className="header-mobile-nav">
-            <Link
-              to="/profile"
-              className={`header-mobile-nav-link${location.pathname === '/profile' ? ' header-mobile-nav-link--active' : ''}`}
-              onClick={closeMenus}
-            >
-              <FiHome size={20} />
-              <span>Главная</span>
-            </Link>
             <Link
               to="/articles"
               className={`header-mobile-nav-link${location.pathname === '/articles' ? ' header-mobile-nav-link--active' : ''}`}

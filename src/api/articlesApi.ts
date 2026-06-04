@@ -171,6 +171,62 @@ export const articlesApi = {
     api
       .delete<{ message: string }>(`/articles/${id}`)
       .then((r) => r.data),
+
+  /** Admin: Get all articles with filtering and sorting */
+  adminIndex: (options: {
+    categoryId?: number;
+    search?: string;
+    sortBy?: 'title' | 'created_at' | 'updated_at';
+    sortOrder?: 'asc' | 'desc';
+    page?: number;
+    limit?: number;
+  } = {}) =>
+    api
+      .get<{ articles: Article[]; total: number; page: number; totalPages: number }>('/admin/articles', {
+        params: {
+          category_id: options.categoryId,
+          search: options.search,
+          sort_by: options.sortBy,
+          sort_order: options.sortOrder,
+          page: options.page ?? 1,
+          limit: options.limit ?? 12,
+        },
+      })
+      .then((r) => r.data),
+
+  /** Admin: Get single article for editing */
+  adminShow: (id: number) =>
+    api
+      .get<{ article: Article }>(`/admin/articles/${id}`)
+      .then((r) => r.data),
+
+  /** Admin: Create article */
+  adminCreate: (data: FormData) =>
+    api
+      .post<{ message: string; article: Article }>('/admin/articles', data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      .then((r) => r.data),
+
+  /** Admin: Update article */
+  adminUpdate: (id: number, data: FormData) =>
+    api
+      .put<{ message: string; article: Article }>(`/admin/articles/${id}`, data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      .then((r) => r.data),
+
+  /** Admin: Delete article */
+  adminDelete: (id: number) =>
+    api
+      .delete<{ message: string }>(`/admin/articles/${id}`)
+      .then((r) => r.data),
+
+  /** Admin: Get all categories */
+  adminCategories: () =>
+    api
+      .get<{ categories: ArticleCategory[] }>('/admin/categories')
+      .then((r) => r.data.categories),
 };
 
 /* ─── Helper functions for fallback content ─── */

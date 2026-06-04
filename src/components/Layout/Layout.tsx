@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
+import BackToTop from '@/components/BackToTop/BackToTop';
 import './Layout.css';
 
 interface LayoutProps {
@@ -15,6 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
