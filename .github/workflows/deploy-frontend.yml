@@ -29,10 +29,10 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist
-          remote-dir: ${{ secrets.FTP_FRONT_DIR }}
+          local-dir: ./dist/
+          server-dir: ${{ secrets.FTP_FRONT_DIR }}
