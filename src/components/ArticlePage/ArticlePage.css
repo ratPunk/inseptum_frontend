@@ -163,6 +163,9 @@
 /* Server HTML container */
 .article-page__html {
   scroll-behavior: smooth;
+  font-weight: 400;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
 }
 
 .article-page__html h1,
@@ -246,6 +249,7 @@
   margin: 0 0 1rem 0;
   opacity: 0.85;
   line-height: var(--line-height-relaxed);
+  font-weight: 400;
 }
 
 .article-page__html ul,
@@ -253,6 +257,7 @@
   margin: 0 0 1rem 0;
   padding-left: 1.5rem;
   opacity: 0.85;
+  font-weight: 400;
 }
 
 .article-page__html li {
