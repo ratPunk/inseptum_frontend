@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { FiUser, FiLogOut, FiMenu, FiX, FiBookOpen, FiSettings } from 'react-icons/fi';
+import { FiUser, FiLogOut, FiMenu, FiX, FiBookOpen, FiSettings, FiCheckSquare } from 'react-icons/fi';
 import { RootState } from '@store/store';
 import { clearCredentials } from '@store/authSlice';
 import type { AppDispatch } from '@store/store';
@@ -60,6 +60,10 @@ const Header: React.FC = () => {
           <Link to="/articles" className={`header-nav-link${location.pathname === '/articles' ? ' header-nav-link--active' : ''}`}>
             <FiBookOpen size={18} />
             <span>Статьи</span>
+          </Link>
+          <Link to="/tests" className={`header-nav-link${location.pathname === '/tests' ? ' header-nav-link--active' : ''}`}>
+            <FiCheckSquare size={18} />
+            <span>Тесты</span>
           </Link>
           <Link to="/profile" className={`header-nav-link${location.pathname === '/profile' ? ' header-nav-link--active' : ''}`}>
             <FiUser size={18} />
@@ -131,6 +135,14 @@ const Header: React.FC = () => {
             >
               <FiBookOpen size={20} />
               <span>Статьи</span>
+            </Link>
+            <Link
+              to="/tests"
+              className={`header-mobile-nav-link${location.pathname === '/tests' ? ' header-mobile-nav-link--active' : ''}`}
+              onClick={closeMenus}
+            >
+              <FiCheckSquare size={20} />
+              <span>Тесты</span>
             </Link>
             <Link
               to="/profile"

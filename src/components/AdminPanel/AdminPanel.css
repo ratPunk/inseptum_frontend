@@ -107,6 +107,10 @@
   background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
 }
 
+.admin-card-icon-wrapper--tests {
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%);
+}
+
 .admin-card-icon-wrapper--stats {
   background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
 }

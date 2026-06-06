@@ -8,6 +8,8 @@ import ArticlePage from '@components/ArticlePage/ArticlePage';
 import AdminPanel from '@components/AdminPanel/AdminPanel';
 import ArticlesAdminPage from '@components/ArticlesAdminPage/ArticlesAdminPage';
 import UsersAdminPage from '@components/UsersAdminPage/UsersAdminPage';
+import TestsAdminPage from '@components/TestsAdminPage/TestsAdminPage';
+import TestsPage from '@components/TestsPage/TestsPage';
 import Layout from '@components/Layout/Layout';
 import ScrollToTop from '@components/ScrollToTop/ScrollToTop';
 
@@ -111,6 +113,26 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <UsersAdminPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/tests"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <TestsAdminPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/tests"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <TestsPage />
               </Layout>
             </ProtectedRoute>
           }

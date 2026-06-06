@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { FiSettings, FiUsers, FiFileText, FiBarChart2 } from 'react-icons/fi';
+import { FiSettings, FiUsers, FiFileText, FiBarChart2, FiClipboard } from 'react-icons/fi';
 import { RootState } from '@store/store';
 import './AdminPanel.css';
 
@@ -44,6 +44,17 @@ const AdminPanel: React.FC = () => {
           </div>
           <h3 className="admin-card-title">Статьи</h3>
           <p className="admin-card-desc">Создание и редактирование статей</p>
+        </div>
+
+        <div
+          className="admin-card admin-card--clickable"
+          onClick={() => navigate('/admin/tests')}
+        >
+          <div className="admin-card-icon-wrapper admin-card-icon-wrapper--tests">
+            <FiClipboard size={24} />
+          </div>
+          <h3 className="admin-card-title">Тесты</h3>
+          <p className="admin-card-desc">Загрузка, редактирование и управление тестами</p>
         </div>
 
         <div className="admin-card">
