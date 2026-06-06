@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FiCalendar } from 'react-icons/fi';
 import type { Article } from '@api/articlesApi';
+import articleImage from '@/style/images/article.webp';
 import './ArticleCard.css';
 
 const CATEGORY_CLASS_MAP: Record<string, string> = {
@@ -22,7 +23,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index = 0 }) => {
   const categoryClass = CATEGORY_CLASS_MAP[article.category_slug] ?? '';
 
   // Single shared image for all articles
-  const imageUrl = '/src/style/images/article.webp';
+  const imageUrl = articleImage;
 
   // Format date
   const formattedDate = new Date(article.created_at).toLocaleDateString('ru-RU', {

@@ -4,6 +4,7 @@ import { FiArrowLeft, FiClock, FiUser, FiCalendar, FiAlertCircle, FiRefreshCw } 
 import { articlesApi, type TocEntry } from '@api/articlesApi';
 import TableOfContents from '@components/TableOfContents/TableOfContents';
 import Button from '@components/ui/Button/Button';
+import articleImage from '@/style/images/article.webp';
 import './ArticlePage.css';
 
 interface ArticleData {
@@ -251,7 +252,7 @@ const ArticlePage: React.FC = () => {
       {/* Hero image */}
       <div className="article-page__hero">
         <img
-          src="/src/style/images/article.webp"
+          src={articleImage}
           alt={article.title}
           className="article-page__hero-image"
         />

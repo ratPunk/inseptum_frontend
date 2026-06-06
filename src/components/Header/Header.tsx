@@ -7,6 +7,7 @@ import { clearCredentials } from '@store/authSlice';
 import type { AppDispatch } from '@store/store';
 import { authApi } from '@api/authApi';
 import Button from '@/components/ui/Button/Button';
+import logoSvg from '@/style/svg/cursor-i2.svg';
 import './Header.css';
 
 const Header: React.FC = () => {
@@ -48,7 +49,7 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/profile" className="header-logo" onClick={closeMenus}>
           <img
-            src="/src/style/svg/cursor-i2.svg"
+            src={logoSvg}
             alt="Inseptum"
             className="header-logo-icon"
           />

@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoSvg from '@/style/svg/cursor-i2.svg';
+import telegramIcon from '@/style/images/telegramIcon.webp';
+import vkIcon from '@/style/images/vkIcon.webp';
+import youtubeIcon from '@/style/images/youtubeIcon.webp';
 import './Footer.css';
 
 const Footer: React.FC = () => {
@@ -12,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="footer-brand">
           <Link to="/profile" className="footer-logo">
             <img
-              src="/src/style/svg/cursor-i2.svg"
+              src={logoSvg}
               alt="Inseptum"
               className="footer-logo-icon"
             />
@@ -56,7 +60,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
             >
               <img 
-                src="/src/style/images/telegramIcon.webp" 
+                src={telegramIcon}
                 alt="Telegram" 
                 className="footer-social-icon"
               />
@@ -69,7 +73,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
             >
               <img 
-                src="/src/style/images/vkIcon.webp" 
+                src={vkIcon}
                 alt="VK" 
                 className="footer-social-icon"
               />
@@ -82,7 +86,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
             >
               <img 
-                src="/src/style/images/youtubeIcon.webp" 
+                src={youtubeIcon}
                 alt="YouTube" 
                 className="footer-social-icon"
               />
