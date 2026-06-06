@@ -19,8 +19,10 @@ const TestsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Загружаем список тестов и уже пройденные результаты параллельно
-    Promise.all([fetchTests(), fetchMyResults()])
+    // fetchMyResults — мягкий запрос: если эндпоинт ещё не готов, просто возвращаем []
+    const safeMyResults = fetchMyResults().catch(() => []);
+
+    Promise.all([fetchTests(), safeMyResults])
       .then(([data, results]) => {
         setTests(data);
         const passedIds = new Set(
