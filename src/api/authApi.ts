@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { store } from '@store/store';
 import { clearCredentials } from '@store/authSlice';
+import { API_BASE_URL } from './config';
 
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 

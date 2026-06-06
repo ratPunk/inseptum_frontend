@@ -8,6 +8,8 @@
  *   GET /api/tests/{id}/content  — полный тест с вопросами
  */
 
+import { apiUrl } from './config';
+
 /** Метаданные теста (то, что отдаётся в списке). */
 export interface TestMeta {
   id: number;
@@ -53,7 +55,7 @@ interface ApiResponse<T> {
 }
 
 async function request<T>(path: string): Promise<T> {
-  const res = await fetch(path, {
+  const res = await fetch(apiUrl(path), {
     headers: { Accept: 'application/json' },
     credentials: 'include',
   });
@@ -71,15 +73,15 @@ async function request<T>(path: string): Promise<T> {
 
 /** Получить список метаданных всех активных тестов. */
 export function fetchTests(): Promise<TestMeta[]> {
-  return request<TestMeta[]>('/api/tests');
+  return request<TestMeta[]>('/tests');
 }
 
 /** Получить метаданные теста по id. */
 export function fetchTestById(id: number): Promise<TestMeta> {
-  return request<TestMeta>(`/api/tests/${id}`);
+  return request<TestMeta>(`/tests/${id}`);
 }
 
 /** Получить полный тест с вопросами по id (из JSON-файла). */
 export function fetchTestContent(id: number): Promise<TestFull> {
-  return request<TestFull>(`/api/tests/${id}/content`);
+  return request<TestFull>(`/tests/${id}/content`);
 }
