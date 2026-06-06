@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { store } from '@store/store';
+import { clearCredentials } from '@store/authSlice';
 
 const api = axios.create({
   baseURL: '/api',
@@ -20,8 +22,8 @@ api.interceptors.response.use(
   (error) => {
     // Only clear if explicitly a 401 and not a login/register request
     if (error.response?.status === 401 && !error.config?.url?.includes('/auth/')) {
-      localStorage.removeItem('auth_token');
-      localStorage.removeItem('auth_user');
+      // Clear both localStorage and Redux state so the app redirects to login immediately
+      store.dispatch(clearCredentials());
     }
     return Promise.reject(error);
   }

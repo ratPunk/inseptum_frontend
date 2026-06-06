@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   FiPlus, FiSearch, FiFilter, FiArrowUp, FiArrowDown,
-  FiEdit2, FiTrash2, FiEye, FiX, FiCheck, FiChevronLeft, FiChevronRight
+  FiEdit2, FiTrash2, FiEye, FiDownload, FiX, FiCheck, FiChevronLeft, FiChevronRight
 } from 'react-icons/fi';
 import { articlesApi, Article, ArticleCategory } from '@api/articlesApi';
 import ArticleForm from './ArticleForm';
@@ -146,6 +146,15 @@ const ArticlesAdminPage: React.FC = () => {
   const handleEdit = (article: Article) => {
     setEditingArticle(article);
     setShowForm(true);
+  };
+
+  // Download article file
+  const handleDownload = async (article: Article) => {
+    try {
+      await articlesApi.adminDownload(article.id, article.filename);
+    } catch (err: any) {
+      alert(err.response?.data?.error || 'Ошибка скачивания файла');
+    }
   };
 
   // Clear filters
@@ -302,6 +311,13 @@ const ArticlesAdminPage: React.FC = () => {
                       onClick={() => navigate(`/articles/${article.id}`)}
                     >
                       <FiEye />
+                    </button>
+                    <button 
+                      className="action-btn download" 
+                      title="Скачать файл"
+                      onClick={() => handleDownload(article)}
+                    >
+                      <FiDownload />
                     </button>
                     <button 
                       className="action-btn edit" 

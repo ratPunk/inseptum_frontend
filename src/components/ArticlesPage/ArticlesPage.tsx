@@ -92,8 +92,8 @@ const ArticlesPage: React.FC = () => {
 
       {filtered.length > 0 ? (
         <div className="articles-page__grid">
-          {filtered.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+          {filtered.map((article, index) => (
+            <ArticleCard key={article.id} article={article} index={index} />
           ))}
         </div>
       ) : (

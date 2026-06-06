@@ -359,6 +359,11 @@
   border-color: var(--color-accent, #e07a2f);
 }
 
+.action-btn.download:hover {
+  color: #4ac98f;
+  border-color: #4ac98f;
+}
+
 .action-btn.edit:hover {
   color: #4a9eff;
   border-color: #4a9eff;

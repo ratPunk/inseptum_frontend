@@ -4,6 +4,7 @@ import './TableOfContents.css';
 
 interface TableOfContentsProps {
   entries: TocEntry[];
+  activeId?: string | null;
 }
 
 /**
@@ -18,7 +19,7 @@ function slugify(text: string): string {
     .trim();
 }
 
-const TableOfContents: React.FC<TableOfContentsProps> = ({ entries }) => {
+const TableOfContents: React.FC<TableOfContentsProps> = ({ entries, activeId }) => {
   if (!entries || entries.length === 0) {
     return null;
   }
@@ -71,7 +72,7 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ entries }) => {
               >
                 <a
                   href={`#${slug}`}
-                  className="toc__link"
+                  className={`toc__link${activeId === slug ? ' toc__link--active' : ''}`}
                   onClick={(e) => handleClick(e, slug)}
                 >
                   {entry.text}

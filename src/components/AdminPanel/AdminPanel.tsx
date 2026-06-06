@@ -24,13 +24,15 @@ const AdminPanel: React.FC = () => {
       </div>
 
       <div className="admin-panel-grid">
-        <div className="admin-card">
+        <div 
+          className="admin-card admin-card--clickable"
+          onClick={() => navigate('/admin/users')}
+        >
           <div className="admin-card-icon-wrapper admin-card-icon-wrapper--users">
             <FiUsers size={24} />
           </div>
           <h3 className="admin-card-title">Пользователи</h3>
           <p className="admin-card-desc">Управление аккаунтами и ролями</p>
-          <span className="admin-card-badge">Скоро</span>
         </div>
 
         <div 

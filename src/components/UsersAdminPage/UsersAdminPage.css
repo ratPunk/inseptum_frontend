@@ -1,0 +1,59 @@
+.users-admin { min-height: 100vh; padding: 3rem 2rem; max-width: 1200px; margin: 0 auto; }
+.users-admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.users-admin-header-left { display: flex; align-items: center; gap: 1rem; }
+.users-admin-back-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer; transition: all 0.2s; font-size: 0.875rem; }
+.users-admin-back-btn:hover { color: var(--accent-color); border-color: var(--accent-color); }
+.users-admin-title { font-size: 2rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+.users-admin-add-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.25rem; border-radius: var(--border-radius-md); border: none; background: var(--accent-color); color: white; cursor: pointer; font-size: 0.875rem; font-weight: 600; transition: all 0.2s; }
+.users-admin-add-btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.users-admin-toolbar { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.users-admin-search { flex: 1; min-width: 200px; position: relative; overflow: hidden; }
+.users-admin-search-icon { position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; }
+.users-admin-search input { width: 100%; padding: 0.625rem 0.875rem 0.625rem 2.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.875rem; transition: border-color 0.2s; box-sizing: border-box; }
+.users-admin-search input:focus { outline: none; border-color: var(--accent-color); }
+.users-admin-role-filter { padding: 0.625rem 1rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.875rem; cursor: pointer; flex-shrink: 0; }
+.users-admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.user-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; animation: usersAdminFadeInUp 0.4s ease-out backwards; }
+.user-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: var(--accent-color); }
+.user-card-header { display: flex; align-items: center; gap: 1rem; }
+.user-card-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-color) 0%, #60A5FA 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.25rem; flex-shrink: 0; }
+.user-card-info { flex: 1; min-width: 0; }
+.user-card-name { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-card-login { font-size: 0.8125rem; color: var(--text-secondary); margin: 0; }
+.user-card-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.user-card-role { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.user-card-role--admin { background: rgba(239, 68, 68, 0.1); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+.user-card-role--user { background: rgba(59, 130, 246, 0.1); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.2); }
+.user-card-date { font-size: 0.75rem; color: var(--text-secondary); }
+.user-card-email { font-size: 0.8125rem; color: var(--text-secondary); margin: 0; }
+.user-card-actions { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--border-color); }
+.user-card-action-btn { display: flex; align-items: center; gap: 0.375rem; padding: 0.375rem 0.75rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: transparent; color: var(--text-secondary); cursor: pointer; font-size: 0.75rem; transition: all 0.2s; }
+.user-card-action-btn:hover { color: var(--accent-color); border-color: var(--accent-color); }
+.user-card-action-btn--danger:hover { color: #EF4444; border-color: #EF4444; }
+.users-admin-loading, .users-admin-error, .users-admin-empty { text-align: center; padding: 4rem 2rem; color: var(--text-secondary); font-size: 1.125rem; }
+.users-admin-error { color: #EF4444; }
+.users-admin-pagination { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.users-admin-pagination button { padding: 0.5rem 0.75rem; border-radius: var(--border-radius-md); border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; transition: all 0.2s; }
+.users-admin-pagination button:hover:not(:disabled) { border-color: var(--accent-color); color: var(--accent-color); }
+.users-admin-pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+.users-admin-pagination span { font-size: 0.875rem; color: var(--text-secondary); }
+.users-admin-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 2rem; animation: usersAdminFadeIn 0.2s ease-out; }
+.users-admin-modal { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 2rem; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; animation: usersAdminSlideUp 0.3s ease-out; }
+.users-admin-modal h2 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin: 0 0 1.5rem; }
+.users-admin-modal-field { margin-bottom: 1.25rem; }
+.users-admin-modal-field label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.375rem; }
+.users-admin-modal-field input, .users-admin-modal-field select { width: 100%; padding: 0.625rem 0.875rem; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); background: var(--bg-secondary); color: var(--text-primary); font-size: 0.875rem; transition: border-color 0.2s; box-sizing: border-box; }
+.users-admin-modal-field input:focus, .users-admin-modal-field select:focus { outline: none; border-color: var(--accent-color); }
+.users-admin-modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1.5rem; }
+.users-admin-modal-btn { padding: 0.625rem 1.25rem; border-radius: var(--border-radius-md); font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.users-admin-modal-btn--primary { background: var(--accent-color); color: white; border: none; }
+.users-admin-modal-btn--primary:hover { background: var(--accent-hover); }
+.users-admin-modal-btn--primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.users-admin-modal-btn--secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-color); }
+.users-admin-modal-btn--secondary:hover { color: var(--text-primary); border-color: var(--text-primary); }
+.users-admin-modal-btn--danger { background: #EF4444; color: white; border: none; }
+.users-admin-modal-btn--danger:hover { background: #DC2626; }
+@keyframes usersAdminFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes usersAdminSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes usersAdminFadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 768px) { .users-admin { padding: 2rem 1rem; } .users-admin-title { font-size: 1.5rem; } .users-admin-grid { grid-template-columns: 1fr; } .users-admin-header { flex-direction: column; align-items: flex-start; } }

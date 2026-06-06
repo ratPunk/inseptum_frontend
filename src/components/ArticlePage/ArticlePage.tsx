@@ -291,7 +291,7 @@ const ArticlePage: React.FC = () => {
       <div className="article-page__body">
         {toc.length > 0 && (
           <aside className="article-page__sidebar">
-            <TableOfContents entries={toc} />
+            <TableOfContents entries={toc} activeId={activeHeadingId} />
           </aside>
         )}
 

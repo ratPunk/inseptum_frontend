@@ -222,6 +222,21 @@ export const articlesApi = {
       .delete<{ message: string }>(`/admin/articles/${id}`)
       .then((r) => r.data),
 
+  /** Admin: Download article DOCX file */
+  adminDownload: (id: number, filename: string) =>
+    api
+      .get(`/admin/articles/${id}/download`, { responseType: 'blob' })
+      .then((r) => {
+        const url = window.URL.createObjectURL(new Blob([r.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', filename);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(url);
+      }),
+
   /** Admin: Get all categories */
   adminCategories: () =>
     api

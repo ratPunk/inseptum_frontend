@@ -15,9 +15,10 @@ const CATEGORY_CLASS_MAP: Record<string, string> = {
 
 interface ArticleCardProps {
   article: Article;
+  index?: number;
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({ article, index = 0 }) => {
   const categoryClass = CATEGORY_CLASS_MAP[article.category_slug] ?? '';
 
   // Single shared image for all articles
@@ -33,7 +34,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article }) => {
   return (
     <Link
       to={`/articles/${article.id}`}
-      className="article-card"
+      className="article-card article-card--animate"
+      style={{ animationDelay: `${index * 0.1}s` }}
       aria-label={`Читать статью: ${article.title}`}
     >
       <div className="article-card__image-wrapper">
