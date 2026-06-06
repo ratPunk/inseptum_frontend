@@ -19,10 +19,26 @@ interface AuthState {
 const storedToken = localStorage.getItem('auth_token');
 const storedUser = localStorage.getItem('auth_user');
 
+const parseStoredUser = (value: string | null): AuthUser | null => {
+  if (!value) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(value);
+  } catch {
+    localStorage.removeItem('auth_user');
+    localStorage.removeItem('auth_token');
+    return null;
+  }
+};
+
+const parsedUser = parseStoredUser(storedUser);
+
 const initialState: AuthState = {
-  user: storedUser ? JSON.parse(storedUser) : null,
-  token: storedToken,
-  isAuthenticated: !!storedToken && !!storedUser,
+  user: parsedUser,
+  token: parsedUser ? storedToken : null,
+  isAuthenticated: !!storedToken && !!parsedUser,
 };
 
 const authSlice = createSlice({
