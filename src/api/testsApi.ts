@@ -3,11 +3,14 @@
  *
  * Запросы идут через Vite-прокси: /api/* → http://localhost:8888/inseptum_backend/api/*
  * Эндпоинты:
- *   GET /api/tests               — список метаданных
- *   GET /api/tests/{id}          — метаданные теста
- *   GET /api/tests/{id}/content  — полный тест с вопросами
+ *   GET  /api/tests               — список метаданных
+ *   GET  /api/tests/{id}          — метаданные теста
+ *   GET  /api/tests/{id}/content  — полный тест с вопросами
+ *   POST /api/tests/{id}/submit   — отправить ответы пользователя
+ *   GET  /api/tests/results       — список результатов текущего пользователя
  */
 
+import api from './authApi';
 import { apiUrl } from './config';
 
 /** Метаданные теста (то, что отдаётся в списке). */
@@ -84,4 +87,64 @@ export function fetchTestById(id: number): Promise<TestMeta> {
 /** Получить полный тест с вопросами по id (из JSON-файла). */
 export function fetchTestContent(id: number): Promise<TestFull> {
   return request<TestFull>(`/tests/${id}/content`);
+}
+
+/* ─── Submit / Results ─── */
+
+/** Один ответ пользователя на вопрос. */
+export interface SubmitAnswer {
+  question_id: number;
+  answer: string;
+}
+
+/** Тело запроса POST /tests/{id}/submit. */
+export interface SubmitAnswersPayload {
+  answers: SubmitAnswer[];
+}
+
+/** Результат попытки, возвращаемый бэкендом после сабмита. */
+export interface TestAttemptResult {
+  attempt_id: number;
+  test_id: number;
+  score: number;
+  max_score: number;
+  passed: boolean;
+  correct_answers: number;
+  total_questions: number;
+  created_at: string;
+}
+
+/** Краткий результат теста из списка пройденных. */
+export interface UserTestResult {
+  test_id: number;
+  passed: boolean;
+  score: number;
+  max_score: number;
+  created_at: string;
+}
+
+/**
+ * Отправить ответы пользователя и сохранить попытку в БД.
+ * POST /api/tests/{id}/submit
+ */
+export function submitTest(
+  id: number,
+  payload: SubmitAnswersPayload,
+): Promise<TestAttemptResult> {
+  return api
+    .post<{ success: boolean; data: TestAttemptResult }>(
+      `/tests/${id}/submit`,
+      payload,
+    )
+    .then((r) => r.data.data);
+}
+
+/**
+ * Получить список результатов текущего авторизованного пользователя.
+ * GET /api/tests/results
+ */
+export function fetchMyResults(): Promise<UserTestResult[]> {
+  return api
+    .get<{ success: boolean; data: UserTestResult[] }>('/tests/results')
+    .then((r) => r.data.data);
 }

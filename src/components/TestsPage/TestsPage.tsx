@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTests, fetchTestContent, TestMeta, TestFull } from '../../api/testsApi';
+import { fetchTests, fetchTestContent, fetchMyResults, TestMeta, TestFull } from '../../api/testsApi';
 import testImage from '../../style/images/test.webp';
 import TestRunner from './TestRunner';
 import './TestsPage.css';
@@ -19,9 +19,14 @@ const TestsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchTests()
-      .then((data) => {
+    // Загружаем список тестов и уже пройденные результаты параллельно
+    Promise.all([fetchTests(), fetchMyResults()])
+      .then(([data, results]) => {
         setTests(data);
+        const passedIds = new Set(
+          results.filter((r) => r.passed).map((r) => r.test_id),
+        );
+        setPassedTests(passedIds);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -42,8 +47,10 @@ const TestsPage: React.FC = () => {
     }
   };
 
-  const handleTestComplete = (testId: number) => {
-    setPassedTests((prev) => new Set(prev).add(testId));
+  const handleTestComplete = (testId: number, passed: boolean) => {
+    if (passed) {
+      setPassedTests((prev) => new Set(prev).add(testId));
+    }
     setActiveTest(null);
   };
 
@@ -60,7 +67,7 @@ const TestsPage: React.FC = () => {
       <TestRunner
         test={activeTest}
         onBack={() => setActiveTest(null)}
-        onComplete={() => handleTestComplete(activeTest.id)}
+        onComplete={(passed) => handleTestComplete(activeTest.id, passed)}
       />
     );
   }

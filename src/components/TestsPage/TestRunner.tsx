@@ -5,7 +5,7 @@ import TestResults from './TestResults';
 interface TestRunnerProps {
   test: TestFull;
   onBack: () => void;
-  onComplete: () => void;
+  onComplete: (passed: boolean) => void;
 }
 
 const TestRunner: React.FC<TestRunnerProps> = ({ test, onBack, onComplete }) => {
@@ -50,7 +50,7 @@ const TestRunner: React.FC<TestRunnerProps> = ({ test, onBack, onComplete }) => 
         test={test}
         answers={answers}
         onRetry={handleRetry}
-        onBack={() => { onComplete(); }}
+        onBack={(passed) => { onComplete(passed); }}
       />
     );
   }
