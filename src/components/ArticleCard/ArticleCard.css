@@ -1,5 +1,6 @@
 .article-card {
-  background-color: rgba(59, 130, 246, 0.08);
+  /* background-color: rgba(5, 48, 117, 0.08) !important; */
+  background-color: var(--primary-color);
   border-radius: var(--border-radius-md);
   padding: 1.5rem;
   cursor: pointer;

@@ -296,8 +296,8 @@
 }
 
 .article-card {
-  background: var(--color-surface, #2a2826);
-  border: 1px solid var(--color-border, #3d3a38);
+  /* background: var(--color-surface, #2a2826); */
+  /* border: 1px solid var(--color-border, #3d3a38); */
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.2s ease;
