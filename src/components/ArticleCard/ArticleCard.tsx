@@ -46,9 +46,6 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index = 0 }) => {
           className="article-card__image"
           loading="lazy"
         />
-        <span className={`article-card__category ${categoryClass}`}>
-          {article.category_name}
-        </span>
       </div>
 
       <div className="article-card__content">
@@ -61,6 +58,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ article, index = 0 }) => {
           <span className="article-card__meta-item">
             <FiCalendar size={14} />
             {formattedDate}
+          </span>
+          <span className={`article-card__category ${categoryClass}`}>
+            {article.category_name}
           </span>
         </div>
       </div>

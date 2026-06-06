@@ -1,14 +1,16 @@
 .article-card {
-  background-color: var(--primary-color);
+  background-color: rgba(59, 130, 246, 0.08);
   border-radius: var(--border-radius-md);
-  overflow: hidden;
+  padding: 1.5rem;
   cursor: pointer;
   transition: transform var(--animation-fast) var(--ease-default),
               box-shadow var(--animation-fast) var(--ease-default);
   border: 1px solid rgba(59, 130, 246, 0.1);
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .article-card:hover {
@@ -24,44 +26,35 @@
 
 /* Image */
 .article-card__image-wrapper {
-  position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--border-radius-sm);
   overflow: hidden;
+  background-color: rgba(59, 130, 246, 0.08);
 }
 
 .article-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--animation-normal) var(--ease-default);
-}
-
-.article-card:hover .article-card__image {
-  transform: scale(1.05);
+  display: block;
 }
 
 .article-card__category {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.6rem;
   border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
+  font-size: 0.75rem;
   font-weight: var(--font-weight-medium);
-  color: var(--white);
-  background-color: rgba(15, 23, 42, 0.8);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--secondary-color);
+  background-color: rgba(59, 130, 246, 0.15);
 }
 
 /* Content */
 .article-card__content {
-  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  flex: 1;
 }
 
 .article-card__title {
@@ -92,6 +85,7 @@
 .article-card__meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: auto;
   padding-top: 0.75rem;
@@ -112,12 +106,15 @@
 }
 
 /* Category color variants */
-.article-card__category--html { background-color: rgba(227, 76, 38, 0.85); }
-.article-card__category--css { background-color: rgba(38, 77, 228, 0.85); }
-.article-card__category--javascript { background-color: rgba(189, 170, 29, 0.85); }
-.article-card__category--react { background-color: rgba(97, 218, 251, 0.2); color: #61DAFB; }
-.article-card__category--php { background-color: rgba(119, 123, 180, 0.85); }
-.article-card__category--bd { background-color: rgba(51, 103, 145, 0.85); }
+.article-card__category--html,
+.article-card__category--css,
+.article-card__category--javascript,
+.article-card__category--react,
+.article-card__category--php,
+.article-card__category--bd {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--secondary-color);
+}
 
 /* Appear animation */
 @keyframes cardFadeIn {
