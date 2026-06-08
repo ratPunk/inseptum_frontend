@@ -23,6 +23,8 @@ const TestResults: React.FC<TestResultsProps> = ({
     if (submitted.current) return;
     submitted.current = true;
 
+    let alive = true;
+
     const payload = {
       answers: test.questions.map((q) => ({
         question_id: q.id,
@@ -30,28 +32,37 @@ const TestResults: React.FC<TestResultsProps> = ({
       })),
     };
 
+    // Локальный расчёт как запасной вариант (вычисляем сразу, до запроса)
+    const correct = test.questions.reduce(
+      (n, q) => (answers[q.id] === q.correct_answer ? n + 1 : n),
+      0,
+    );
+    const fallbackResult = {
+      attempt_id: 0,
+      test_id: test.id,
+      score: correct,
+      max_score: test.questions.length,
+      passed: test.questions.length > 0 && correct / test.questions.length >= 0.6,
+      correct_answers: correct,
+      total_questions: test.questions.length,
+      created_at: new Date().toISOString(),
+    };
+
     submitTest(test.id, payload)
-      .then((data) => setResult(data))
+      .then((data) => {
+        if (alive) setResult(data);
+      })
       .catch((err) => {
+        if (!alive) return;
         setSubmitError(
           err instanceof Error ? err.message : 'Не удалось сохранить результат',
         );
-        // Считаем локально как запасной вариант
-        const correct = test.questions.reduce(
-          (n, q) => (answers[q.id] === q.correct_answer ? n + 1 : n),
-          0,
-        );
-        setResult({
-          attempt_id: 0,
-          test_id: test.id,
-          score: correct,
-          max_score: test.questions.length,
-          passed: correct / test.questions.length >= 0.6,
-          correct_answers: correct,
-          total_questions: test.questions.length,
-          created_at: new Date().toISOString(),
-        });
+        setResult(fallbackResult);
       });
+
+    return () => {
+      alive = false;
+    };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!result) {

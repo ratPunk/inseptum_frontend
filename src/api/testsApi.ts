@@ -132,11 +132,16 @@ export function submitTest(
   payload: SubmitAnswersPayload,
 ): Promise<TestAttemptResult> {
   return api
-    .post<{ success: boolean; data: TestAttemptResult }>(
+    .post<{ success: boolean; data?: TestAttemptResult; error?: string }>(
       `/tests/${id}/submit`,
       payload,
     )
-    .then((r) => r.data.data);
+    .then((r) => {
+      if (!r.data.success || r.data.data === undefined) {
+        throw new Error(r.data.error ?? 'API error: submit returned no data');
+      }
+      return r.data.data;
+    });
 }
 
 /**
