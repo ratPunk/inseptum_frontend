@@ -101,9 +101,6 @@ const Footer: React.FC = () => {
           <p className="footer-copyright">
             © {currentYear} Inseptum. Все права защищены.
           </p>
-          <p className="footer-made">
-            Создано с использованием React + TypeScript
-          </p>
         </div>
       </div>
     </footer>
