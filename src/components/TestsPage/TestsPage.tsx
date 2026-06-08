@@ -56,13 +56,20 @@ const TestsPage: React.FC = () => {
     }
     setActiveTest(null);
 
-    // Синхронизируем с сервером: подтягиваем актуальные результаты из БД
+    // Синхронизируем с сервером: мерджим серверные результаты с локальными.
+    // Если submit упал и в БД новой попытки нет — локальный «только что прошёл»
+    // не должен затираться пустым ответом сервера.
     fetchMyResults()
       .then((results) => {
-        const passedIds = new Set(
+        const serverPassed = new Set(
           results.filter((r) => r.passed).map((r) => r.test_id),
         );
-        setPassedTests(passedIds);
+        setPassedTests((prev) => {
+          const merged = new Set(serverPassed);
+          prev.forEach((id) => merged.add(id));
+          if (passed) merged.add(testId);
+          return merged;
+        });
       })
       .catch(() => {
         // Если запрос упал — оставляем локальное состояние
