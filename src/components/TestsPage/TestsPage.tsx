@@ -50,10 +50,23 @@ const TestsPage: React.FC = () => {
   };
 
   const handleTestComplete = (testId: number, passed: boolean) => {
+    // Немедленно обновляем локально (UX без задержки)
     if (passed) {
       setPassedTests((prev) => new Set(prev).add(testId));
     }
     setActiveTest(null);
+
+    // Синхронизируем с сервером: подтягиваем актуальные результаты из БД
+    fetchMyResults()
+      .then((results) => {
+        const passedIds = new Set(
+          results.filter((r) => r.passed).map((r) => r.test_id),
+        );
+        setPassedTests(passedIds);
+      })
+      .catch(() => {
+        // Если запрос упал — оставляем локальное состояние
+      });
   };
 
   if (isLoading && tests.length === 0) {

@@ -155,6 +155,11 @@ export function submitTest(
  */
 export function fetchMyResults(): Promise<UserTestResult[]> {
   return api
-    .get<{ success: boolean; data: UserTestResult[] }>('/tests/results')
-    .then((r) => r.data.data);
+    .get<{ success: boolean; data?: UserTestResult[] }>('/tests/results')
+    .then((r) => {
+      if (!r.data.success) {
+        throw new Error('Не удалось получить результаты');
+      }
+      return r.data.data ?? [];
+    });
 }
