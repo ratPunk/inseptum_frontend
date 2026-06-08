@@ -137,10 +137,15 @@ export function submitTest(
       payload,
     )
     .then((r) => {
+      console.log('[submitTest] raw response:', r.status, r.data);
       if (!r.data.success || r.data.data === undefined) {
         throw new Error(r.data.error ?? 'API error: submit returned no data');
       }
       return r.data.data;
+    })
+    .catch((err) => {
+      console.error('[submitTest] error:', err?.response?.status, err?.response?.data ?? err?.message);
+      throw err;
     });
 }
 
